@@ -31,13 +31,72 @@ const Validate = () => {
     };
 };
 
+/*
+    This function generates password and returns it.
+*/
+const generatePassword = () => {
+    // Characters required to generate password.
+    const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const lowercase = 'abcdefghijklmnopqrstuvwxyz';
+    const numbers = '0123456789';
+    const specialChars = '`~!@#$%^&*()-=_+[]{}\\|":;\'/?.>,<';
+
+    // Thiss array will contain all the characters that user want to include in password.
+    let allChars = [];
+
+    // Updating allChars array according to user's preference.
+    if (allAllowedCharactersCheckboxes[0].checked) {
+        allChars.push(uppercase);
+    };
+
+    if (allAllowedCharactersCheckboxes[1].checked) {
+        allChars.push(lowercase);
+    };
+
+    if (allAllowedCharactersCheckboxes[2].checked) {
+        allChars.push(numbers);
+    };
+
+    if (allAllowedCharactersCheckboxes[3].checked) {
+        allChars.push(specialChars);
+    };
+
+    // Password length;
+    const passwordLength = Number(characterNumbersElement.textContent);
+
+    // Initializing password.
+    let password = '';
+
+    // Ensure at least one character from each category.
+    allChars.forEach(characters => {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        password += characters[randomIndex];
+    });
+
+    // Generate random characters to fill up the rest of the password.
+    const remainingLength = passwordLength - password.length;
+    for (let i = 0; i < remainingLength; i++) {
+        const categoryIndex = Math.floor(Math.random() * allChars.length);
+        const characters = allChars[categoryIndex];
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        password += characters[randomIndex];
+    };
+
+    // Shuffle the password to mix the characters.
+    password = password.split('').sort(() => Math.random() - 0.5).join('');
+
+    return password;
+};
+
 const generateButtonHandler = () => {
     if (Validate()) {
+        // Get password.
+        const password = generatePassword();
 
         // Update password.
-        passwordOutput.textContent = 'Valid';
+        passwordOutput.textContent = password;
     } else {
-        passwordOutput.innerHTML = 'Not Valid';
+        passwordOutput.innerHTML = "";
     };
 }
 
