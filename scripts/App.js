@@ -3,7 +3,8 @@ const rangeInput = document.getElementById('range');
 const characterNumbersElement = document.getElementById('character-numbers');
 const allAllowedCharactersCheckboxes = document.querySelectorAll('input[type="checkbox"]');
 const generateButton = document.getElementById('generate-button');
-const passwordOutput = document.getElementById('password');
+const passwordOutput = document.getElementById('password').querySelector('.password-output');
+const copyPasswordButton = document.getElementById('copy-password');
 
 rangeInput.addEventListener('change', (e) => {
     characterNumbersElement.innerHTML = e.target.value.toString().padStart(2, 0);
@@ -95,8 +96,14 @@ const generateButtonHandler = () => {
 
         // Update password.
         passwordOutput.textContent = password;
+
+        // Show copy button.
+        copyPasswordButton.classList.remove('hide');
     } else {
         passwordOutput.innerHTML = "";
+
+        // Hide copy button.
+        copyPasswordButton.classList.add('hide');
     };
 }
 
@@ -111,4 +118,37 @@ document.addEventListener('keydown', (e) => {
 
         generateButtonHandler();
     }
+});
+
+// Copy password to clipboard when copyPasswordButton is clicked.
+copyPasswordButton.addEventListener('click', () => {
+
+    // Create a range to select the password text.
+    const range = document.createRange();
+    // Select the contents of the password.
+    range.selectNodeContents(passwordOutput);
+
+    // Create a selection object and add the range to it.
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+
+    // Use the Clipboard API to copy the selected password.
+    navigator.clipboard.writeText(selection.toString())
+        .then(() => {
+            copyPasswordButton.innerText = 'Copied';
+
+            // Resetting copy button text after 5 seconds of copying.
+            setTimeout(() => {
+                copyPasswordButton.innerText = 'Copy';
+            }, 5000);
+        })
+        .catch((err) => {
+            copyPasswordButton.innerText = 'Error';
+            copyPasswordButton.classList.add('error');
+            console.log('Error:', err);
+        });
+
+    // Clear the selection
+    selection.removeAllRanges();
 });
