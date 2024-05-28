@@ -24,6 +24,33 @@
                 <span id="character-numbers">08</span>
             </div>
         </div>
+        <div class="option-group">
+            <div>Allowed Characters:</div>
+            <p class="error hide">Select atleast two **</p>
+            <label for="A-Z" class="allowed-characters">
+                <input type="checkbox" value="uppercase" id="A-Z">
+                <span class="title">A-Z</span>
+            </label>
+
+            <label for="a-z" class="allowed-characters">
+                <input type="checkbox" value="lowercase" id="a-z" checked>
+                <span class="title">a-z</span>
+            </label>
+
+            <label for="0-9" class="allowed-characters">
+                <input type="checkbox" value="numbers" id="0-9" checked>
+                <span class="title">0-9</span>
+            </label>
+
+            <label for="special-characters" class="allowed-characters">
+                <input type="checkbox" value="specialChars" id="special-characters">
+                <span class="title">!@#$...</span>
+            </label>
+        </div>
+        <div class="submit-and-result">
+            <button type="button" id="generate-button">Generate</button>
+            <div id="password"></div>
+        </div>
     </main>
 
     <script src="./scripts/App.js"></script>

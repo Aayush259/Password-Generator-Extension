@@ -96,3 +96,80 @@ h1{
     font-weight:700;
     font-size:18px;
 }
+
+.option-group>div{
+    margin-top:1rem;
+}
+
+.allowed-characters{
+    cursor:pointer;
+}
+
+.allowed-characters>input{
+    position:absolute;
+    top:-110vh;
+}
+
+.allowed-characters .title{
+    display:inline-block;
+    text-align:center;
+    margin:10px;
+    border:1.2px solid transparent;
+    border-radius:0.8rem;
+    font-size:18px;
+    font-weight:600;
+    min-width:60px;
+    padding:0.3rem 0.5rem;
+}
+
+input[type="checkbox"]:focus + .title{
+    border-color:#FFF !important;
+}
+
+input[type="checkbox"]:checked + .title{
+    border-color:#00fd0a;
+    background-color:#00fd0841;
+}
+
+#generate-button{
+    display:block;
+    min-width:85%;
+    min-height:35px;
+    border:none;
+    border-radius:0.5rem;
+    background-color:#199b1d;
+    color:#FFF;
+    font-size:1.2rem;
+    font-weight:500;
+    letter-spacing:1.2px;
+    margin:1rem auto 1rem auto;
+    cursor:pointer;
+}
+
+#generate-button:hover{
+    background-color:#00fd0a;
+}
+
+#generate-button:focus{
+    outline:1.2px solid #FFF;
+}
+
+#password{
+    width:98%;
+    margin:1rem auto 1rem auto;
+    padding:0.5rem;
+    min-height:50px;
+    text-align:center;
+    font-size:1.5rem;
+}
+
+.error{
+    color:rgb(238, 72, 72);
+    font-weight:600;
+    font-size:14px;
+    margin:5px 0 0 5px;
+}
+
+.hide{
+    display:none;
+}
