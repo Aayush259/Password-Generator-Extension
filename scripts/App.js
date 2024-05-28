@@ -14,7 +14,7 @@ rangeInput.addEventListener('change', (e) => {
     This function validates whether atleast two checkboxes are checked or not.
     If not, then show error and return false, if yes then return true.
 */
-const Validate = () => {
+const validate = () => {
     const errorPara = document.querySelector('.error');
 
     // Hide errors while validating.
@@ -90,7 +90,7 @@ const generatePassword = () => {
 };
 
 const generateButtonHandler = () => {
-    if (Validate()) {
+    if (validate()) {
         // Get password.
         const password = generatePassword();
 
@@ -147,6 +147,11 @@ copyPasswordButton.addEventListener('click', () => {
             copyPasswordButton.innerText = 'Error';
             copyPasswordButton.classList.add('error');
             console.log('Error:', err);
+            // Resetting copy button text after 5 seconds of copying.
+            setTimeout(() => {
+                copyPasswordButton.innerText = 'Copy';
+                copyPasswordButton.classList.remove('error');
+            }, 5000);
         });
 
     // Clear the selection

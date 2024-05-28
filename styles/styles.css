@@ -184,7 +184,7 @@ input[type="checkbox"]:checked + .title{
 }
 
 .error{
-    color:rgb(238, 72, 72);
+    color:rgb(238, 72, 72) !important;
     font-weight:600;
     font-size:14px;
     margin:5px 0 0 5px;
