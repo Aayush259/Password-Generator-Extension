@@ -1,0 +1,10 @@
+{
+    "manifest_version": 3,
+    "name": "Password Generator",
+    "version": "1.0",
+    "description": "Generate a purely random password based on the characters of your preferences.",
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": "./images/security-icon.png"
+    }
+}
