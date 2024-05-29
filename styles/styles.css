@@ -166,6 +166,12 @@ input[type="checkbox"]:checked + .title{
     text-align:center;
     font-size:1.5rem;
     position:relative;
+    word-break:break-all;
+}
+
+.password-output{
+    width:90%;
+    word-break:break-all;
 }
 
 #copy-password{
